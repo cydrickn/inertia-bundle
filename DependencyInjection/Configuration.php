@@ -26,9 +26,10 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('root_view')->defaultValue('app.html.twig')->end()
                 ->arrayNode('ssr')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('enabled')->defaultFalse()->end()
-                        ->scalarNode('url')->end()
+                        ->scalarNode('url')->defaultValue('')->end()
                     ->end()
                 ->end()
             ->end();
